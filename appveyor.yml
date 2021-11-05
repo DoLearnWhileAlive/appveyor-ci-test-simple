@@ -1,0 +1,42 @@
+
+image: Visual Studio 2019
+
+branches:
+  only:
+    - dev
+    - main    
+
+environment:
+  matrix:
+    - job_name: build_dev
+    - job_name: build_main
+
+build_script:
+  - ps: Write-Host "Build test"
+
+test: off 
+
+for:
+  -
+    matrix:
+      only:
+        - job_name: build_dev
+
+    branches:
+      only:
+        - dev
+
+    skip_commits:
+      message: /^Do not build commit.*/
+
+  -
+    matrix:
+      only:
+        - job_name: build_main
+
+    branches:
+      only:
+        - main
+
+    skip_commits:
+      message: /^Do not build commit.*/
