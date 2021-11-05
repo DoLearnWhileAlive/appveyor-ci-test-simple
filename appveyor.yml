@@ -1,10 +1,5 @@
 
-image: Visual Studio 2019
-
-branches:
-  only:
-    - dev
-    - main    
+image: Visual Studio 2019  
 
 environment:
   matrix:
